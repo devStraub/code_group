@@ -1,5 +1,0 @@
-package com.cgpm.api.model.type;
-
-public enum StatusType {
-
-}
