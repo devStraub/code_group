@@ -1,0 +1,14 @@
+package com.cgpm.api.model.entities.pk;
+
+import java.io.Serializable;
+
+import jakarta.persistence.Embeddable;
+
+/**
+ * @author michel.pech
+ */
+
+@Embeddable
+public class MembroPK implements Serializable {
+	
+}

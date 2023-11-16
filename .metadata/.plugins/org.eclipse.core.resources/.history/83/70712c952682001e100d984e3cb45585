@@ -1,0 +1,46 @@
+package com.cgpm.api.base;
+
+import java.lang.reflect.ParameterizedType;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+
+/**
+ * @author michel.pech
+ */
+
+public abstract class BaseDTO<T extends PersistenceInterface<ID>, ID, DTO> {
+	
+	private Long id;
+
+	@Autowired
+	private ModelMapper modelMapper;
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	private Class<DTO> getDTOClass() {
+		ParameterizedType parameterizedType = (ParameterizedType) getClass().getGenericSuperclass();
+		return (Class<DTO>) parameterizedType.getActualTypeArguments()[2];
+	}
+
+	private Class<T> getEntityClass() {
+		ParameterizedType parameterizedType = (ParameterizedType) getClass().getGenericSuperclass();
+		return (Class<T>) parameterizedType.getActualTypeArguments()[0];
+	}	
+	
+	public T dtoToEntity(DTO dto) {
+		return modelMapper.map(dto, this.getEntityClass());
+	}
+	
+	public DTO entityToDTO(T entity) {
+		return modelMapper.map(entity, this.getDTOClass());
+	}
+	
+	
+}

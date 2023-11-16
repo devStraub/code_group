@@ -1,0 +1,18 @@
+# Postgres
+spring.datasource.url=jdbc:postgresql://ls-6f73561eddda6493b2ca7f431915d7a597836a4b.cvyyanzj9i0e.us-east-1.rds.amazonaws.com/postgres
+spring.datasource.username=dbmasteruser
+spring.datasource.password=
+
+# JPA
+spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=false
+spring.jpa.hibernate.ddl-auto=none
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.properties.hibernate.default_schema=public
+
+# Exclui o spring security
+#spring.autoconfigure.exclude=org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
+
+# Endereco API
+api.product.adress=https://egf1amcv33.execute-api.us-east-1.amazonaws.com/dev/produto/

@@ -1,0 +1,34 @@
+package com.cgpm.api.model.dto;
+
+import com.cgpm.api.base.BaseDTO;
+import com.cgpm.api.model.entities.Membro;
+
+/**
+ * @author michel.pech
+ */
+
+public class MembroDTO extends BaseDTO<Membro, MembroDTO> {
+	
+	private ProjetoDTO projeto;
+	private PessoaDTO pessoa;
+	
+	public MembroDTO() {
+	}
+
+	public ProjetoDTO getProjeto() {
+		return projeto;
+	}
+
+	public void setProjeto(ProjetoDTO projeto) {
+		this.projeto = projeto;
+	}
+
+	public PessoaDTO getPessoa() {
+		return pessoa;
+	}
+
+	public void setPessoa(PessoaDTO pessoa) {
+		this.pessoa = pessoa;
+	}
+		
+}

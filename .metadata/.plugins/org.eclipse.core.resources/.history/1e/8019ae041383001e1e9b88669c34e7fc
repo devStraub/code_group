@@ -1,0 +1,20 @@
+package com.cgpm.api.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.cgpm.api.base.BaseService;
+import com.cgpm.api.model.entities.MembroProjeto;
+import com.cgpm.api.repositories.MembroProjetoRepository;
+
+/**
+ * @author michel.pech
+ */
+
+@Service
+public class MembroProjetoService extends BaseService<MembroProjeto, Long> {
+	
+	@Autowired
+	private MembroProjetoRepository repository;
+		
+}

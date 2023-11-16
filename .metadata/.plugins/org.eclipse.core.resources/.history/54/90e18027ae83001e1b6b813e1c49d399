@@ -1,0 +1,18 @@
+package com.cgpm.api.model.entities;
+
+import java.io.Serializable;
+
+import com.cgpm.api.base.BaseEntity;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+/**
+ * @author michel.pech
+ */
+
+@Entity
+@Table(name = "membros")
+public class Cargo extends BaseEntity<Long> implements Serializable {
+
+}

@@ -1,0 +1,5 @@
+package com.cgpm.api.model.entities.pk;
+
+public class MembroPK {
+
+}

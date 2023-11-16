@@ -1,0 +1,5 @@
+package com.cgpm.api.model.dto;
+
+public class CargoPessoaDTO {
+
+}

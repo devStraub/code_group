@@ -1,0 +1,55 @@
+package com.cgpm.api.base;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import jakarta.transaction.Transactional;
+
+/**
+ * @author michel.pech
+ */
+
+@Service
+public abstract class BaseService<T extends PersistenceInterface<ID>, ID> {
+
+	@Autowired
+	private BaseRepository<T, ID> jpaRepository;	
+	
+	@Autowired
+	private NextIdUtil nextIdUtil;		
+
+	@Transactional
+	public List<T> findAll() {
+		return jpaRepository.findAll();
+	}
+
+	@Transactional
+	public Optional<T> findById(ID id) {
+		return jpaRepository.findById(id);
+	}
+
+	@Transactional
+	public T insert(T entity) {
+        entity.setId(getNextId(entity.getClass().getSimpleName()));
+        return jpaRepository.saveAndFlush(entity);		
+	}
+
+	@Transactional
+	public T update(T entity) {
+		return jpaRepository.saveAndFlush(entity);
+	}
+
+	@Transactional
+	public void deleteById(ID id) {
+		jpaRepository.deleteById(id);
+	}
+	
+    @SuppressWarnings("unchecked")
+	private ID getNextId(String entityName) {
+        return (ID) nextIdUtil.getNextId(entityName);
+    }	
+
+}

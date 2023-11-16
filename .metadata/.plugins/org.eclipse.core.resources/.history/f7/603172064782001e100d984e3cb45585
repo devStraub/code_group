@@ -1,0 +1,42 @@
+package com.cgpm.api.base;
+
+import org.springframework.stereotype.Component;
+import org.springframework.util.ObjectUtils;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TypedQuery;
+
+/**
+ * @author michel.pech
+ * 
+ * Classe auxiliar para buscar proximo ID para inclusoes em bancos de dados que nao possuam auto-increment.
+ * 
+ **/
+
+@Component
+public class NextIdUtil {
+	
+	@PersistenceContext
+	private EntityManager entityManager;
+
+	public EntityManager getEntityManager() {
+		return entityManager;
+	}	
+	
+	public Long getNextId(String entityName) {		
+		StringBuilder sql = new StringBuilder();
+		
+		sql.append(" select max(tab.id) ");
+		sql.append(" from " + entityName + " as tab");
+		
+		TypedQuery<Long> query = entityManager.createQuery(sql.toString(), Long.class);
+		
+		Long currentId = (Long) query.getSingleResult();
+		if (ObjectUtils.isEmpty(currentId)) {
+			currentId = Long.valueOf(0);
+		}
+		
+		return currentId + 1;
+	}	
+}

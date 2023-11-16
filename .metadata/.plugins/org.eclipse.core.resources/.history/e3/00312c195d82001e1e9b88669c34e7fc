@@ -1,0 +1,44 @@
+package com.cgpm.api.base.util;
+
+import java.lang.reflect.ParameterizedType;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+/**
+ * @author michel.pech
+ */
+
+@Component
+public class ModelMapperUtil<T, DTO> {
+	
+	@Autowired
+	private ModelMapper modelMapper;
+	
+    private final Class<T> entityClass;
+    private final Class<DTO> dtoClass;	
+
+//	private Class<DTO> getDTOClass() {
+//		ParameterizedType parameterizedType = (ParameterizedType) getClass().getGenericSuperclass();
+//		return (Class<DTO>) parameterizedType.getActualTypeArguments()[1];
+//	}
+//
+//	private Class<T> getEntityClass() {
+//		ParameterizedType parameterizedType = (ParameterizedType) getClass().getGenericSuperclass();
+//		return (Class<T>) parameterizedType.getActualTypeArguments()[0];
+//	}	
+
+    public ModelMapperUtil(Class<T> entityClass, Class<DTO> dtoClass) {
+        this.entityClass = entityClass;
+        this.dtoClass = dtoClass;
+    }	
+	
+    public T dtoToEntity(DTO dto) {
+        return modelMapper.map(dto, entityClass);
+    }
+
+    public DTO entityToDTO(T entity) {
+        return modelMapper.map(entity, dtoClass);
+    }	
+}

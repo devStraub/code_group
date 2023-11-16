@@ -1,0 +1,19 @@
+package com.cgpm.api.model;
+
+import java.io.Serializable;
+
+import com.cgpm.api.base.BaseEntity;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+/**
+ * @author michel.pech
+ */
+
+@Entity
+@Table(name = "projeto")
+public class Pessoa extends BaseEntity<Long> implements Serializable {
+	
+	
+}

@@ -1,0 +1,53 @@
+package com.cgpm.api.model.entities;
+
+import java.io.Serializable;
+
+import com.cgpm.api.base.BaseEntity;
+import com.cgpm.api.model.entities.pk.MembroPK;
+
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
+/**
+ * @author michel.pech
+ */
+
+@Entity
+@Table(name = "membros")
+public class Membro extends BaseEntity<MembroPK> implements Serializable {
+
+	private static final long serialVersionUID = 3948287077221686045L;
+	
+	private MembroPK id;
+	private Pessoa pessoa;
+	
+	public Membro() {
+	}
+		
+	@EmbeddedId
+	@Override
+	public MembroPK getId() {
+		return id;
+	}
+	
+	@Override
+	public void setId(MembroPK id) {
+		this.id = id;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "idpessoa")		
+	public Pessoa getPessoa() {
+		return pessoa;
+	}
+
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
+	}
+				
+	
+}

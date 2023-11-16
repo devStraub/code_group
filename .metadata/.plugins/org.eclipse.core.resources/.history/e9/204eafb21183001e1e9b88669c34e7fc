@@ -1,0 +1,38 @@
+package com.cgpm.api.model.entities.pk;
+
+import java.io.Serializable;
+
+import com.cgpm.api.model.entities.Projeto;
+
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+
+/**
+ * @author michel.pech
+ */
+
+@Embeddable
+public class MembroPK implements Serializable {
+
+	private static final long serialVersionUID = 2459232120478107664L;
+	
+	private Projeto projeto;
+
+	public MembroPK() {
+	}
+
+	public MembroPK(Projeto projeto) {
+		this.projeto = projeto;
+	}
+	
+	@ManyToOne
+	@JoinColumn(name = "idprojeto")	
+	public Projeto getProjeto() {
+		return projeto;
+	}
+
+	public void setProjeto(Projeto projeto) {
+		this.projeto = projeto;
+	}		
+}

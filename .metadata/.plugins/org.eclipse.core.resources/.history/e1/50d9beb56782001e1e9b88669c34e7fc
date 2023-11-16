@@ -1,0 +1,74 @@
+package com.cgpm.api.service;
+
+import static org.junit.jupiter.api.Assertions.assertNull;
+
+import java.math.BigDecimal;
+import java.util.Calendar;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.cgpm.api.model.entities.Membro;
+import com.cgpm.api.model.entities.Pessoa;
+import com.cgpm.api.model.entities.Projeto;
+import com.cgpm.api.repositories.MembroRepository;
+import com.cgpm.api.services.MembroService;
+
+/**
+ * @author michel.pech
+ */
+
+@SpringBootTest
+@ExtendWith(MockitoExtension.class)
+public class MembroServiceTest {
+	
+	@InjectMocks
+	private MembroService membroService;
+	
+	@Mock
+	private MembroRepository repository;	
+	
+	@Test
+	void membroInsertTest(Membro entity) throws Exception {			
+		// ARRANGE
+		Pessoa gerente = new Pessoa();
+		gerente.setId(Long.valueOf(1));
+		gerente.setNome("Gerente");
+		gerente.setDataNascimento(Calendar.getInstance());
+		gerente.setFuncionario(false);
+		gerente.setCpf("cpf");		
+		
+		Pessoa pessoa = new Pessoa();
+		pessoa.setId(Long.valueOf(1));
+		pessoa.setNome("Pessoa");
+		pessoa.setDataNascimento(Calendar.getInstance());
+		pessoa.setFuncionario(false);
+		pessoa.setCpf("cpf");
+		
+		Projeto projeto = new Projeto();
+		projeto.setId(Long.valueOf(999));
+		projeto.setNome("nome");
+		projeto.setDataInicio(Calendar.getInstance());
+		projeto.setDataPrevisaoFim(Calendar.getInstance());
+		projeto.setDataFim(Calendar.getInstance());
+		projeto.setDescricao("descrição");
+		//projeto.setStatus(StatusType.ANALISE.name());
+		projeto.setOrcamento(BigDecimal.ZERO);
+		//projeto.setRisco(RiscoType.BAIXO.name());
+		projeto.setGerente(gerente);
+		
+		Membro membro = new Membro();		
+		membro.setPessoa(pessoa);
+		//membro.setProjeto(projeto);
+				
+		// ACT
+		Membro result = membroService.insert(membro);
+		
+		// ASSERT
+		assertNull(result);		
+	}	
+}

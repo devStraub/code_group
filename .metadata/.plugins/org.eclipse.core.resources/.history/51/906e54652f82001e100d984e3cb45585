@@ -1,0 +1,5 @@
+package com.cgpm.api.services;
+
+public class MembroService {
+
+}

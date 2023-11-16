@@ -1,0 +1,5 @@
+package com.cgpm.api.controllers;
+
+public class MembroProjetoController {
+
+}
