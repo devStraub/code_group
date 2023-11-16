@@ -9,7 +9,8 @@
 - Rodar SQL contido no diretório de mesmo nome
 
 - Link API: http://localhost:8080/
-Swagger: http://localhost:8080/swagger-ui/index.html#/
+  
+- Swagger: http://localhost:8080/swagger-ui/index.html#/
 
 - Link APP: http://localhost:3000/
 
