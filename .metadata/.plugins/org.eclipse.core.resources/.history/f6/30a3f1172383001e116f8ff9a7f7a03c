@@ -1,6 +1,0 @@
-package com.cgpm.api.base.util;
-
-public interface PersistenceInterface<ID> {
-	
-	void setId(ID id);
-}
