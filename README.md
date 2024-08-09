@@ -1,4 +1,4 @@
-# Lista de Projetos | Code Group
+# Lista de Projetos
 
 - Baixar o projeto
 
@@ -15,7 +15,3 @@
 - Link APP: http://localhost:3000/
 
 ---------------------------------------
-
-# Observações
-
-- No arquivo da proposta do desafio, o DDL da tabela "Membro" está com problema, referenciando a coluna de pessoa à coluna de ID de projeto.
